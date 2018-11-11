@@ -16,11 +16,11 @@ import (
 	"google.golang.org/api/sheets/v4"
 )
 
-var filename = flag.String("gconfig", "credentials.json", "Location of the google credentials config file.")
+var configPath = flag.String("gconfig", "./", "Location of the google credentials config + token file.")
 
 func init() {
 	flag.Parse()
-	fmt.Println(*filename)
+	fmt.Println(*configPath)
 }
 
 // Retrieve a token, saves the token, then returns the generated client.
@@ -28,7 +28,7 @@ func getClient(config *oauth2.Config) *http.Client {
 	// The file token.json stores the user's access and refresh tokens, and is
 	// created automatically when the authorization flow completes for the first
 	// time.
-	tokFile := "token.json"
+	tokFile := *configPath + "token.json"
 	tok, err := tokenFromFile(tokFile)
 	if err != nil {
 		tok = getTokenFromWeb(config)
@@ -79,7 +79,7 @@ func saveToken(path string, token *oauth2.Token) {
 }
 
 func getSheetsService() *sheets.Service {
-	b, err := ioutil.ReadFile(*filename)
+	b, err := ioutil.ReadFile(*configPath + "credentials.json")
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
 	}
