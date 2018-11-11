@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -14,6 +15,13 @@ import (
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/sheets/v4"
 )
+
+var filename = flag.String("gconfig", "credentials.json", "Location of the google credentials config file.")
+
+func init() {
+	flag.Parse()
+	fmt.Println(*filename)
+}
 
 // Retrieve a token, saves the token, then returns the generated client.
 func getClient(config *oauth2.Config) *http.Client {
@@ -71,7 +79,7 @@ func saveToken(path string, token *oauth2.Token) {
 }
 
 func getSheetsService() *sheets.Service {
-	b, err := ioutil.ReadFile("credentials.json")
+	b, err := ioutil.ReadFile(*filename)
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
 	}
