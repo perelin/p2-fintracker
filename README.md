@@ -1,3 +1,17 @@
+# Run
+
+## Onvista
+
+heroku run onvista -gconfig=/app/cmd/onvista/
+
+## Scheduler
+
+heroku addons:open scheduler
+
+# 2do
+
+refactor google api credentials and token into env
+
 # Google API
 
 https://developers.google.com/sheets/api/guides/values
