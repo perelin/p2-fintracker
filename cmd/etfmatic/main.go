@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/davecgh/go-spew/spew"
+	"time"
 
 	"github.com/parnurzeal/gorequest"
 )
@@ -40,16 +39,47 @@ func main() {
 
 	//spew.Dump(emSignin.Token)
 	//spew.Dump(emSignin.ClientSystems.EuLive)
-	var amAll emAll
+
+	// var emAll emAll
+	// _, _, errs = request.
+	// 	SetDebug(false).
+	// 	Get("https://gateway.etfmatic.com/user/1.0/retrieve").
+	// 	Param("session_token", emSignin.Token).
+	// 	Param("system_identifier", emSignin.ClientSystems.EuLive).
+	// 	EndStruct(&emAll)
+
+	// if errs != nil {
+	// 	fmt.Println(errs)
+	// }
+	// spew.Dump(emAll.UserAccountsSummary.TotalContributions)
+
+	var emGoals emGoals
 	_, _, errs = request.
 		SetDebug(false).
-		Get("https://gateway.etfmatic.com/user/1.0/retrieve").
+		Get("https://gateway.etfmatic.com/user-goal/1.0/retrieve-goals").
 		Param("session_token", emSignin.Token).
 		Param("system_identifier", emSignin.ClientSystems.EuLive).
-		EndStruct(&amAll)
-
+		EndStruct(&emGoals)
 	if errs != nil {
 		fmt.Println(errs)
 	}
-	spew.Dump(amAll.UserAccountsSummary.TotalContributions)
+
+	// spew.Dump(emGoals.UsrGoals[0].UsrinvCurrentValuation)
+	// spew.Dump(emGoals.UsrGoals[0].UsrinvCurrentValuationAssets)
+	// spew.Dump(emGoals.UsrGoals[0].UsrinvTotalGains)
+	// spew.Dump(emGoals.UsrGoals[0].UsrinvTotalDividendsReceived)
+	// spew.Dump(emGoals.UsrGoals[0].UsrinvTotalContributions)
+	// spew.Dump(emGoals.UsrGoals[0].UsrinvUnallocatedCreditAmount)
+
+	srv := getSheetsService()
+	now := time.Now()
+	values := []interface{}{now.Format("02.01.2006 15:04:05"),
+		emGoals.UsrGoals[0].UsrinvCurrentValuation,
+		emGoals.UsrGoals[0].UsrinvCurrentValuationAssets,
+		emGoals.UsrGoals[0].UsrinvTotalGains,
+		emGoals.UsrGoals[0].UsrinvTotalDividendsReceived,
+		emGoals.UsrGoals[0].UsrinvTotalContributions,
+		emGoals.UsrGoals[0].UsrinvUnallocatedCreditAmount,
+	}
+	appendToOnvistSheet(srv, values)
 }
