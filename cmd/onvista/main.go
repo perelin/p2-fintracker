@@ -74,6 +74,11 @@ func main() {
 	// Write financial overview to google sheets
 	// ---
 
+	if financialOverview.S0.Result.FinancialOverview.Depot.BuyValue == 0 {
+		// resilience against nonsense API return values
+		return
+	}
+
 	srv := getSheetsService()
 	now := time.Now()
 	values := []interface{}{now.Format("02.01.2006 15:04:05"),
