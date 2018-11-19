@@ -1624,3 +1624,170 @@ type emAll struct {
 	Dependents []interface{} `json:"dependents"`
 	Cltekyc    interface{}   `json:"cltekyc"`
 }
+
+type emGoals struct {
+	UsrGoals []struct {
+		UsrinvgrpID                        string      `json:"usrinvgrp_id"`
+		UsrinvDateCreated                  string      `json:"usrinv_date_created"`
+		UsrinvAPIKey                       string      `json:"usrinv_api_key"`
+		UsrinvStateMaster                  string      `json:"usrinv_state_master"`
+		UsrinvStateGoal                    string      `json:"usrinv_state_goal"`
+		UsrinvStateInvesting               string      `json:"usrinv_state_investing"`
+		UsrinvStateTrading                 string      `json:"usrinv_state_trading"`
+		UsrinvStateEdit                    string      `json:"usrinv_state_edit"`
+		UsrinvcfgID                        string      `json:"usrinvcfg_id"`
+		ModsetID                           string      `json:"modset_id"`
+		UsrinvtypID                        string      `json:"usrinvtyp_id"`
+		UsrinvDateUpdated                  string      `json:"usrinv_date_updated"`
+		UsrinvName                         string      `json:"usrinv_name"`
+		UsrinvTimeHorizonYears             interface{} `json:"usrinv_time_horizon_years"`
+		UsrinvInitialContribution          interface{} `json:"usrinv_initial_contribution"`
+		UsrinvRecurringAmount              int         `json:"usrinv_recurring_amount"`
+		UsrinvRecurringPeriod              string      `json:"usrinv_recurring_period"`
+		UsrinvAutoRebalancing              bool        `json:"usrinv_auto_rebalancing"`
+		UsrinvAutoReduction                bool        `json:"usrinv_auto_reduction"`
+		UsrinvDateTargetEnd                interface{} `json:"usrinv_date_target_end"`
+		UsrinvTimeRemainingDays            interface{} `json:"usrinv_time_remaining_days"`
+		UsrinvIsPaused                     bool        `json:"usrinv_is_paused"`
+		UsrinvTargetAmount                 int         `json:"usrinv_target_amount"`
+		UsrinvGoalType                     string      `json:"usrinv_goal_type"`
+		UsrinvDivestmentPolicy             string      `json:"usrinv_divestment_policy"`
+		UsrinvDivestmentAmount             int         `json:"usrinv_divestment_amount"`
+		UsrinvDivestmentRecurringAmount    int         `json:"usrinv_divestment_recurring_amount"`
+		UsrinvDivestmentRecurringPeriod    interface{} `json:"usrinv_divestment_recurring_period"`
+		UsrinvIsDeleted                    bool        `json:"usrinv_is_deleted"`
+		UsrinvDateDeleted                  interface{} `json:"usrinv_date_deleted"`
+		UsrinvDeletedBy                    interface{} `json:"usrinv_deleted_by"`
+		UsrinvRecurringPaymentDayOffset    string      `json:"usrinv_recurring_payment_day_offset"`
+		UsrinvRecurringPaymentDayOffsetEnd string      `json:"usrinv_recurring_payment_day_offset_end"`
+		UsrinvMaintenanceMode              string      `json:"usrinv_maintenance_mode"`
+		UsrinvInvestorProfile              struct {
+			Priority struct {
+				Value         string `json:"value"`
+				InvestorLower string `json:"investor_lower"`
+				InvestorUpper string `json:"investor_upper"`
+			} `json:"priority"`
+			Adverse struct {
+				Value         string `json:"value"`
+				InvestorLower string `json:"investor_lower"`
+				InvestorUpper string `json:"investor_upper"`
+			} `json:"adverse"`
+			Trend struct {
+				Value         string `json:"value"`
+				InvestorLower string `json:"investor_lower"`
+				InvestorUpper string `json:"investor_upper"`
+			} `json:"trend"`
+		} `json:"usrinv_investor_profile"`
+		AlcmodrskprfNumber             string      `json:"alcmodrskprf_number"`
+		UsrinvClosureRequested         string      `json:"usrinv_closure_requested"`
+		UsrinvDateClosureRequeted      interface{} `json:"usrinv_date_closure_requeted"`
+		UsrinvSubscriptionSuccess      string      `json:"usrinv_subscription_success"`
+		UsrinvSubscriptionGocardlessID string      `json:"usrinv_subscription_gocardless_id"`
+		UsrinvSubscriptionData         struct {
+			Success                bool `json:"success"`
+			GoCardlessSubscription struct {
+				ID           string      `json:"id"`
+				CreatedAt    time.Time   `json:"created_at"`
+				Amount       int         `json:"amount"`
+				Currency     string      `json:"currency"`
+				Status       string      `json:"status"`
+				Name         string      `json:"name"`
+				StartDate    string      `json:"start_date"`
+				EndDate      interface{} `json:"end_date"`
+				Interval     int         `json:"interval"`
+				IntervalUnit string      `json:"interval_unit"`
+				DayOfMonth   int         `json:"day_of_month"`
+				Month        interface{} `json:"month"`
+				Metadata     struct {
+					EtfmIdentity      string `json:"etfm_identity"`
+					EtfmGoalReference string `json:"etfm_goal_reference"`
+				} `json:"metadata"`
+				PaymentReference interface{} `json:"payment_reference"`
+				UpcomingPayments []struct {
+					ChargeDate string `json:"charge_date"`
+					Amount     int    `json:"amount"`
+				} `json:"upcoming_payments"`
+				Links struct {
+					Mandate string `json:"mandate"`
+				} `json:"links"`
+			} `json:"goCardless_subscription"`
+			GoCardlessSubscriptionID string `json:"goCardless_subscriptionId"`
+		} `json:"usrinv_subscription_data"`
+		UsrinvSubscriptionSchedule struct {
+			Amount       int    `json:"amount"`
+			IntervalUnit string `json:"interval_unit"`
+			Interval     int    `json:"interval"`
+			DayOfMonth   int    `json:"day_of_month"`
+		} `json:"usrinv_subscription_schedule"`
+		UsrinvIsCustomGoal            string      `json:"usrinv_is_custom_goal"`
+		UsrinvCustomIndexWeights      interface{} `json:"usrinv_custom_index_weights"`
+		UsrinvCustomIndexWeightsNamed interface{} `json:"usrinv_custom_index_weights_named"`
+		UsrinvFinalInvoiceIssued      string      `json:"usrinv_final_invoice_issued"`
+		UsrinvDateFinalInvoice        interface{} `json:"usrinv_date_final_invoice"`
+		UsrinvDisplayData             struct {
+			Icon  string `json:"icon"`
+			Color string `json:"color"`
+		} `json:"usrinv_display_data"`
+		UsrinvDateSuitabilityCheck string      `json:"usrinv_date_suitability_check"`
+		UsrinvDateMandateChanged   interface{} `json:"usrinv_date_mandate_changed"`
+		UsrinvGlideTarget          struct {
+			Active    string `json:"active"`
+			Target    string `json:"target"`
+			Horizon   string `json:"horizon"`
+			Agreement string `json:"agreement"`
+		} `json:"usrinv_glide_target"`
+		UsrinvMandateReviewRequired         string      `json:"usrinv_mandate_review_required"`
+		UsrinvDateMandateReviewRequired     interface{} `json:"usrinv_date_mandate_review_required"`
+		UsrinvstaID                         string      `json:"usrinvsta_id"`
+		UsrinvTradingInProgress             string      `json:"usrinv_trading_in_progress"`
+		UsrinvInitialContributionPaid       string      `json:"usrinv_initial_contribution_paid"`
+		UsrinvUnallocatedCreditAmount       float64     `json:"usrinv_unallocated_credit_amount"`
+		UsrinvReservedCreditAmount          float64     `json:"usrinv_reserved_credit_amount"`
+		UsrinvBlockedCreditAmount           int         `json:"usrinv_blocked_credit_amount"`
+		UsrinvAllocatedCreditAmount         int         `json:"usrinv_allocated_credit_amount"`
+		UsrinvTotalContributions            int         `json:"usrinv_total_contributions"`
+		UsrinvTotalContributionsSys         int         `json:"usrinv_total_contributions_sys"`
+		UsrinvCurrentValuation              float64     `json:"usrinv_current_valuation"`
+		UsrinvCurrentValuationAssets        float64     `json:"usrinv_current_valuation_assets"`
+		UsrinvCurrentValuationDate          string      `json:"usrinv_current_valuation_date"`
+		UsrinvValuationIsStale              bool        `json:"usrinv_valuation_is_stale"`
+		UsrinvTotalGains                    float64     `json:"usrinv_total_gains"`
+		UsrinvTotalPurchases                float64     `json:"usrinv_total_purchases"`
+		UsrinvDateFirstPayment              string      `json:"usrinv_date_first_payment"`
+		UsrinvDateLastPayment               string      `json:"usrinv_date_last_payment"`
+		UsrinvDateLastProcessed             string      `json:"usrinv_date_last_processed"`
+		UsrinvAmountLiquidated              float64     `json:"usrinv_amount_liquidated"`
+		UsrinvTargetAchieved                string      `json:"usrinv_target_achieved"`
+		UsrinvIsPendingClosure              string      `json:"usrinv_is_pending_closure"`
+		UsrinvDatePendingClosure            interface{} `json:"usrinv_date_pending_closure"`
+		UsrinvIsClosed                      string      `json:"usrinv_is_closed"`
+		UsrinvDateClosed                    interface{} `json:"usrinv_date_closed"`
+		UsrinvTotalDividendsReceived        float64     `json:"usrinv_total_dividends_received"`
+		UsrinvDebitDueDate                  string      `json:"usrinv_debit_due_date"`
+		UsrinvTotalInvoiced                 float64     `json:"usrinv_total_invoiced"`
+		UsrinvTotalInvoicesPaid             float64     `json:"usrinv_total_invoices_paid"`
+		UsrinvTotalInvoicesOwing            int         `json:"usrinv_total_invoices_owing"`
+		UsrinvTotalWithdrawn                string      `json:"usrinv_total_withdrawn"`
+		UsrinvTotalWithdrawnSys             string      `json:"usrinv_total_withdrawn_sys"`
+		UsrinvDailyReturns                  string      `json:"usrinv_daily_returns"`
+		UsrinvMonthlyReturns                interface{} `json:"usrinv_monthly_returns"`
+		UsrinvLifetimeReturns               string      `json:"usrinv_lifetime_returns"`
+		AlcmodrskprfID                      interface{} `json:"alcmodrskprf_id"`
+		UsrinvForecastSummary               interface{} `json:"usrinv_forecast_summary"`
+		UsrinvForecastSummaryDate           interface{} `json:"usrinv_forecast_summary_date"`
+		UsrinvForecastTargetPercentileRange interface{} `json:"usrinv_forecast_target_percentile_range"`
+		UsrinvForecastTargetPercentOff      interface{} `json:"usrinv_forecast_target_percent_off"`
+		UsrinvLastRebalanceDate             string      `json:"usrinv_last_rebalance_date"`
+		UsrinvLastRebalanceSysprcrun        string      `json:"usrinv_last_rebalance_sysprcrun"`
+		UsrinvDateLastTrade                 string      `json:"usrinv_date_last_trade"`
+		UsrinvCorpactAdjustmentsAssets      interface{} `json:"usrinv_corpact_adjustments_assets"`
+		UsrinvCorpactAdjustmentsCash        string      `json:"usrinv_corpact_adjustments_cash"`
+		NextScheduledPayment                struct {
+			ChargeDate string `json:"charge_date"`
+			Amount     int    `json:"amount"`
+		} `json:"next_scheduled_payment"`
+		UsrinvgrptypID   string `json:"usrinvgrptyp_id"`
+		UsrinvgrptypCode string `json:"usrinvgrptyp_code"`
+	} `json:"usr_goals"`
+	Success bool `json:"success"`
+}
