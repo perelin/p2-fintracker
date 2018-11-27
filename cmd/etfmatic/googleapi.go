@@ -125,7 +125,7 @@ func appendToOnvistSheet(srv *sheets.Service, values []interface{}) {
 
 	vr.Values = append(vr.Values, values)
 
-	readRange := "etfmatic!A1:G"
+	readRange := "etfmatic!A1:H"
 
 	_, err := srv.Spreadsheets.Values.Append(spreadsheetId, readRange, &vr).ValueInputOption("USER_ENTERED").Do()
 

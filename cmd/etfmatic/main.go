@@ -29,7 +29,7 @@ func main() {
 
 	request := gorequest.New()
 	var emSignin emSignin
-	_, _, errs := request.SetDebug(false).
+	_, _, errs := request.SetDebug(true).
 		Post("https://gateway.etfmatic.com/user/1.0/sign-in").
 		Type("multipart").
 		Send("api_data={\"user_email\":\"patino@p2lab.de\",\"user_password\":\"go17:ab03\"}").EndStruct(&emSignin)
@@ -80,6 +80,7 @@ func main() {
 		emGoals.UsrGoals[0].UsrinvTotalDividendsReceived,
 		emGoals.UsrGoals[0].UsrinvTotalContributions,
 		emGoals.UsrGoals[0].UsrinvUnallocatedCreditAmount,
+		"=indirect(\"D\" & row()) / indirect(\"F\" & row())",
 	}
 	appendToOnvistSheet(srv, values)
 }

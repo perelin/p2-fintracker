@@ -7,6 +7,8 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/davecgh/go-spew/spew"
+
 	"github.com/PuerkitoBio/goquery"
 	"github.com/parnurzeal/gorequest"
 	"github.com/subosito/gotenv"
@@ -174,6 +176,7 @@ func main() {
 		fmt.Println(errs)
 	}
 	fmt.Println(summary.TotalCurrentAssetValue)
+	spew.Dump(summary)
 
 	// --- POST
 	// Write financial overview to google sheets
