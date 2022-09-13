@@ -8,6 +8,11 @@ heroku run onvista -gconfig=/app/cmd/onvista/
 
 heroku addons:open scheduler
 
+scheudler job calls eg:
+$ onvista -gconfig=/app/cmd/onvista/
+$ etfmatic -gconfig=/app/cmd/etfmatic/
+$ visualvest -gconfig=/app/cmd/visualvest/
+
 # 2do
 
 refactor google api credentials and token into env
